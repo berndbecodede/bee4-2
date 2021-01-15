@@ -6,6 +6,25 @@ def on_pin_pressed_p0():
         # . . # .
         . # # . .
         """)
+    basic.set_led_color(Colors.RED)
+    basic.pause(500)
+    basic.set_led_color(Colors.ORANGE)
+    basic.pause(500)
+    basic.set_led_color(Colors.YELLOW)
+    basic.pause(500)
+    basic.set_led_color(Colors.GREEN)
+    basic.pause(500)
+    basic.set_led_color(Colors.BLUE)
+    basic.pause(500)
+    basic.set_led_color(Colors.INDIGO)
+    basic.pause(500)
+    basic.set_led_color(Colors.VIOLET)
+    basic.pause(500)
+    basic.set_led_color(Colors.PURPLE)
+    basic.pause(500)
+    basic.set_led_color(Colors.WHITE)
+    basic.turn_rgb_led_off()
+    basic.set_led_color(Colors.OFF)
 input.on_pin_pressed(TouchPin.P0, on_pin_pressed_p0)
 
 def on_pin_pressed_p3():
@@ -576,6 +595,16 @@ def on_button_pressed_ab():
         basic.clear_screen()
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
+def on_button_pressed_b():
+    basic.show_leds("""
+        # # # . .
+        # . . # .
+        # # # . .
+        # . . # .
+        # # # . .
+        """)
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
 def on_pin_pressed_p1():
     basic.show_string("1")
     while input.button_is_pressed(Button.A):
@@ -731,22 +760,3 @@ input.on_pin_pressed(TouchPin.P1, on_pin_pressed_p1)
 
 basic.show_string("oN")
 music.play_tone(277, music.beat(BeatFraction.HALF))
-basic.set_led_color(Colors.RED)
-basic.pause(500)
-basic.set_led_color(Colors.ORANGE)
-basic.pause(500)
-basic.set_led_color(Colors.YELLOW)
-basic.pause(500)
-basic.set_led_color(Colors.GREEN)
-basic.pause(500)
-basic.set_led_color(Colors.BLUE)
-basic.pause(500)
-basic.set_led_color(Colors.INDIGO)
-basic.pause(500)
-basic.set_led_color(Colors.VIOLET)
-basic.pause(500)
-basic.set_led_color(Colors.PURPLE)
-basic.pause(500)
-basic.set_led_color(Colors.WHITE)
-basic.turn_rgb_led_off()
-basic.set_led_color(Colors.OFF)

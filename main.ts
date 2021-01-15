@@ -6,25 +6,25 @@ input.onPinPressed(TouchPin.P0, function () {
         # . . # .
         . # # . .
         `)
-    basic.setLedColor(Colors.Red)
-    basic.pause(500)
-    basic.setLedColor(Colors.Orange)
-    basic.pause(500)
-    basic.setLedColor(Colors.Yellow)
-    basic.pause(500)
-    basic.setLedColor(Colors.Green)
-    basic.pause(500)
-    basic.setLedColor(Colors.Blue)
-    basic.pause(500)
-    basic.setLedColor(Colors.Indigo)
-    basic.pause(500)
-    basic.setLedColor(Colors.Violet)
-    basic.pause(500)
-    basic.setLedColor(Colors.Purple)
-    basic.pause(500)
-    basic.setLedColor(Colors.White)
-    basic.turnRgbLedOff()
-    basic.setLedColor(Colors.Off)
+    while (input.isGesture(Gesture.TiltRight)) {
+        basic.setLedColor(Colors.Red)
+        basic.pause(200)
+        basic.setLedColor(Colors.Orange)
+        basic.pause(200)
+        basic.setLedColor(Colors.Yellow)
+        basic.pause(200)
+        basic.setLedColor(Colors.Green)
+        basic.pause(200)
+        basic.setLedColor(Colors.Blue)
+        basic.pause(200)
+        basic.setLedColor(Colors.Indigo)
+        basic.pause(200)
+        basic.setLedColor(Colors.Violet)
+        basic.pause(200)
+        basic.setLedColor(Colors.Purple)
+        basic.pause(200)
+        basic.setLedColor(Colors.White)
+    }
 })
 input.onPinPressed(TouchPin.P3, function () {
     images.createImage(`
@@ -35,7 +35,7 @@ input.onPinPressed(TouchPin.P3, function () {
         # . . . .
         `).showImage(0)
     basic.showString("A or  B")
-    while (input.buttonIsPressed(Button.A)) {
+    if (input.buttonIsPressed(Button.A)) {
         music.playMelody("C D E F G E D C ", 240)
         basic.showString("Hey Mathias :D")
         basic.pause(100)
@@ -44,8 +44,7 @@ input.onPinPressed(TouchPin.P3, function () {
         basic.turnRgbLedOff()
         basic.showIcon(IconNames.Yes)
         basic.clearScreen()
-    }
-    while (input.buttonIsPressed(Button.B)) {
+    } else if (input.buttonIsPressed(Button.B)) {
         basic.setLedColor(0x00ffff)
         basic.showString("B...")
         basic.turnRgbLedOff()
@@ -56,17 +55,15 @@ input.onPinPressed(TouchPin.P3, function () {
 })
 input.onButtonPressed(Button.A, function () {
     basic.showString("A... P1")
-    while (input.buttonIsPressed(Button.B)) {
+    if (input.buttonIsPressed(Button.B)) {
         while (input.pinIsPressed(TouchPin.P1)) {
             basic.showCompass(5000)
             basic.clearScreen()
         }
-        break;
-while (input.pinIsPressed(TouchPin.P0)) {
-            input.calibrateCompass()
-            basic.clearScreen()
-            basic.showCompass(5000)
-        }
+    } else if (input.pinIsPressed(TouchPin.P0)) {
+        input.calibrateCompass()
+        basic.clearScreen()
+        basic.showCompass(5000)
     }
 })
 input.onPinPressed(TouchPin.P2, function () {
@@ -77,17 +74,13 @@ input.onPinPressed(TouchPin.P2, function () {
         # # . . .
         # # . . .
         `).showImage(0)
-    basic.showString("A or  B")
-    while (input.buttonIsPressed(Button.A)) {
-        basic.showString("beweg mich")
-        while (input.isGesture(Gesture.ScreenDown)) {
-            basic.setLedColor(0xff0080)
-            basic.showIcon(IconNames.Yes)
-            basic.turnRgbLedOff()
-            basic.clearScreen()
-        }
-    }
-    while (input.buttonIsPressed(Button.B)) {
+    basic.showString("A / B")
+    if (input.buttonIsPressed(Button.A)) {
+        basic.setLedColor(0xff0080)
+        basic.showIcon(IconNames.Yes)
+        basic.turnRgbLedOff()
+        basic.clearScreen()
+    } else if (input.buttonIsPressed(Button.B)) {
         basic.setLedColor(0x00ff00)
         basic.showString("B...")
         basic.turnRgbLedOff()
@@ -607,10 +600,20 @@ input.onButtonPressed(Button.B, function () {
         # . . # .
         # # # . .
         `)
+    if (input.buttonIsPressed(Button.A)) {
+        led.plotBarGraph(
+        1,
+        100
+        )
+    } else if (input.pinIsPressed(TouchPin.P0)) {
+        music.playTone(330, music.beat(BeatFraction.Whole))
+    } else if (input.pinIsPressed(TouchPin.P1)) {
+        music.ringTone(262)
+    }
 })
 input.onPinPressed(TouchPin.P1, function () {
     basic.showString("1")
-    while (input.buttonIsPressed(Button.A)) {
+    if (input.buttonIsPressed(Button.A)) {
         basic.setLedColor(Colors.Red)
         images.createImage(`
             . . . . .
@@ -691,8 +694,7 @@ input.onPinPressed(TouchPin.P1, function () {
             . . . . .
             . . . . .
             `).showImage(0)
-    }
-    while (input.buttonIsPressed(Button.B)) {
+    } else if (input.buttonIsPressed(Button.B)) {
         basic.setLedColor(Colors.Green)
         images.createImage(`
             # . . . .
@@ -762,5 +764,6 @@ input.onPinPressed(TouchPin.P1, function () {
         basic.clearScreen()
     }
 })
-basic.showString("oN")
 music.playTone(277, music.beat(BeatFraction.Half))
+basic.showIcon(IconNames.Square)
+basic.clearScreen()
