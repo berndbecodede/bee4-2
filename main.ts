@@ -599,6 +599,15 @@ input.onButtonPressed(Button.AB, function () {
         basic.clearScreen()
     }
 })
+input.onButtonPressed(Button.B, function () {
+    basic.showLeds(`
+        # # # . .
+        # . . # .
+        # # # . .
+        # . . # .
+        # # # . .
+        `)
+})
 input.onPinPressed(TouchPin.P1, function () {
     basic.showString("1")
     while (input.buttonIsPressed(Button.A)) {
