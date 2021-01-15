@@ -1,4 +1,4 @@
-input.onPinPressed(TouchPin.P0, function on_pin_pressed_p0() {
+input.onPinPressed(TouchPin.P0, function () {
     basic.showLeds(`
         . # # . .
         # . . # .
@@ -6,8 +6,27 @@ input.onPinPressed(TouchPin.P0, function on_pin_pressed_p0() {
         # . . # .
         . # # . .
         `)
+    basic.setLedColor(Colors.Red)
+    basic.pause(500)
+    basic.setLedColor(Colors.Orange)
+    basic.pause(500)
+    basic.setLedColor(Colors.Yellow)
+    basic.pause(500)
+    basic.setLedColor(Colors.Green)
+    basic.pause(500)
+    basic.setLedColor(Colors.Blue)
+    basic.pause(500)
+    basic.setLedColor(Colors.Indigo)
+    basic.pause(500)
+    basic.setLedColor(Colors.Violet)
+    basic.pause(500)
+    basic.setLedColor(Colors.Purple)
+    basic.pause(500)
+    basic.setLedColor(Colors.White)
+    basic.turnRgbLedOff()
+    basic.setLedColor(Colors.Off)
 })
-input.onPinPressed(TouchPin.P3, function on_pin_pressed_p3() {
+input.onPinPressed(TouchPin.P3, function () {
     images.createImage(`
         . . . . #
         . . . . .
@@ -35,22 +54,22 @@ input.onPinPressed(TouchPin.P3, function on_pin_pressed_p3() {
         basic.clearScreen()
     }
 })
-input.onButtonPressed(Button.A, function on_button_pressed_a() {
+input.onButtonPressed(Button.A, function () {
     basic.showString("A... P1")
     while (input.buttonIsPressed(Button.B)) {
         while (input.pinIsPressed(TouchPin.P1)) {
             basic.showCompass(5000)
             basic.clearScreen()
         }
-        break
-        while (input.pinIsPressed(TouchPin.P0)) {
+        break;
+while (input.pinIsPressed(TouchPin.P0)) {
             input.calibrateCompass()
             basic.clearScreen()
             basic.showCompass(5000)
         }
     }
 })
-input.onPinPressed(TouchPin.P2, function on_pin_pressed_p2() {
+input.onPinPressed(TouchPin.P2, function () {
     images.createImage(`
         . . . # #
         . . . # #
@@ -77,13 +96,13 @@ input.onPinPressed(TouchPin.P2, function on_pin_pressed_p2() {
         basic.clearScreen()
     }
 })
-input.onGesture(Gesture.Shake, function on_gesture_shake() {
+input.onGesture(Gesture.Shake, function () {
     basic.setLedColor(Colors.Green)
     basic.pause(100)
     basic.clearScreen()
     basic.turnRgbLedOff()
 })
-input.onButtonPressed(Button.AB, function on_button_pressed_ab() {
+input.onButtonPressed(Button.AB, function () {
     basic.showString("A+B")
     while (input.pinIsPressed(TouchPin.P0)) {
         music.playTone(262, music.beat(BeatFraction.Sixteenth))
@@ -580,7 +599,7 @@ input.onButtonPressed(Button.AB, function on_button_pressed_ab() {
         basic.clearScreen()
     }
 })
-input.onPinPressed(TouchPin.P1, function on_pin_pressed_p1() {
+input.onPinPressed(TouchPin.P1, function () {
     basic.showString("1")
     while (input.buttonIsPressed(Button.A)) {
         basic.setLedColor(Colors.Red)
@@ -736,22 +755,3 @@ input.onPinPressed(TouchPin.P1, function on_pin_pressed_p1() {
 })
 basic.showString("oN")
 music.playTone(277, music.beat(BeatFraction.Half))
-basic.setLedColor(Colors.Red)
-basic.pause(500)
-basic.setLedColor(Colors.Orange)
-basic.pause(500)
-basic.setLedColor(Colors.Yellow)
-basic.pause(500)
-basic.setLedColor(Colors.Green)
-basic.pause(500)
-basic.setLedColor(Colors.Blue)
-basic.pause(500)
-basic.setLedColor(Colors.Indigo)
-basic.pause(500)
-basic.setLedColor(Colors.Violet)
-basic.pause(500)
-basic.setLedColor(Colors.Purple)
-basic.pause(500)
-basic.setLedColor(Colors.White)
-basic.turnRgbLedOff()
-basic.setLedColor(Colors.Off)
